@@ -7,6 +7,15 @@ void addDigitRight(long long k, int d, long long& result){
 }
 
 void addDidigtLeft(long long k, int d, long long& result){
+    string kStr = to_string(k);
+    string dStr = to_string(d);
+    string resultStr = dStr + kStr;
+    try {
+        result = stoll(resultStr);
+    } catch (const std::out_of_range& oor) {
+        cerr << "Ошибка: Результат слишком большой. Возвращаю 0." << endl;
+        result = 0;
+    }
 }
 
 int main() {
@@ -27,6 +36,15 @@ int main() {
         cout << "0. Выход" << endl;
         cout << "Выберите действие: ";
         cin >> choice;
+        string kStr = to_string(k);
+    string dStr = to_string(d);
+    string resultStr = dStr + kStr;
+    try {
+        result = stoll(resultStr);
+    } catch (const std::out_of_range& oor) {
+        cerr << "Ошибка: Результат слишком большой. Возвращаю 0." << endl;
+        result = 0;
+    }
     } while (choice != 0);
     return 0;
 }
