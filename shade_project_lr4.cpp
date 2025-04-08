@@ -8,6 +8,15 @@ void addDigitRight(long long k, int d, long long& result){
 }
 
 void addDigitLeft(long long k, int d, long long& result){
+    string kStr = to_string(k);
+    string dStr = to_string(d);
+    string resultStr = dStr + kStr;
+    try {
+        result = stoll(resultStr);
+    } catch (const std::out_of_range& oor) {
+        cerr << "Ошибка: Результат слишком большой. Возвращаю 0." << endl;
+        result = 0;
+    }
 }
 
 int main() {
@@ -28,6 +37,7 @@ int main() {
         cout << "0. Выход" << endl;
         cout << "Выберите действие: ";
         cin >> choice;
+<<<<<<< HEAD
         switch (choice) {
             case 1: {
                 cout << "Введите натуральное число K: ";
@@ -79,6 +89,17 @@ int main() {
                 cout << "Ошибка: Неверный выбор. Пожалуйста, выберите действие из меню." << endl;
             }
             }
+=======
+        string kStr = to_string(k);
+    string dStr = to_string(d);
+    string resultStr = dStr + kStr;
+    try {
+        result = stoll(resultStr);
+    } catch (const std::out_of_range& oor) {
+        cerr << "Ошибка: Результат слишком большой. Возвращаю 0." << endl;
+        result = 0;
+    }
+>>>>>>> b4b805d5fd781a3552437b62e204592c67b54095
     } while (choice != 0);
     return 0;
 }
