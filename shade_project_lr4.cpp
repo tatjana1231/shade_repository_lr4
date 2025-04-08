@@ -4,9 +4,10 @@
 using namespace std;
 
 void addDigitRight(long long k, int d, long long& result){
+    result = k * 10 + d;
 }
 
-void addDidigtLeft(long long k, int d, long long& result){
+void addDigitLeft(long long k, int d, long long& result){
 }
 
 int main() {
@@ -27,6 +28,57 @@ int main() {
         cout << "0. Выход" << endl;
         cout << "Выберите действие: ";
         cin >> choice;
+        switch (choice) {
+            case 1: {
+                cout << "Введите натуральное число K: ";
+                cin >> k;
+                if (k <= 0) {
+                    cout << "Ошибка: K должно быть натуральным числом (больше 0)." << endl;
+                    k = 0;
+                    kEntered = false;
+                } else {
+                    kEntered = true;
+                }
+                break;
+            }
+            case 2: {
+                cout << "Введите цифру D (в диапазоне 1-9): ";
+                cin >> d;
+                if (d < 1 || d > 9) {
+                    cout << "Ошибка: D должно быть цифрой от 1 до 9." << endl;
+                    d = 0;
+                    dEntered = false;
+                } else {
+                    dEntered = true;
+                }
+                break;
+            }
+            case 3: {
+                if (!kEntered || !dEntered) {
+                    cout << "Ошибка: Сначала необходимо ввести число K и цифру D." << endl;
+                } else {
+                    addDigitRight(k, d, result); // Передаем result по ссылке
+                    cout << "Результат добавления цифры " << d << " справа к числу " << k << " равен: " << result << endl;
+                }
+                break;
+            }
+            case 4: {
+                if (!kEntered || !dEntered) {
+                    cout << "Ошибка: Сначала необходимо ввести число K и цифру D." << endl;
+                } else {
+                    addDigitLeft(k, d, result); // Передаем result по ссылке
+                    cout << "Результат добавления цифры " << d << " слева к числу " << k << " равен: " << result << endl;
+                }
+                break;
+            }
+            case 0: {
+                cout << "Выход из программы." << endl;
+                break;
+            }
+            default: {
+                cout << "Ошибка: Неверный выбор. Пожалуйста, выберите действие из меню." << endl;
+            }
+            }
     } while (choice != 0);
     return 0;
 }
